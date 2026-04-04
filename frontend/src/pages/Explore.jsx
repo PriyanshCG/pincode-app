@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaSearchLocation } from "react-icons/fa";
 
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || "";
+
 export default function Explore() {
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
@@ -48,7 +50,7 @@ export default function Explore() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
-      
+
       {/* 🔥 NAVBAR */}
       <div className="bg-white shadow-md p-4 flex justify-between items-center">
         <h1 className="text-xl font-bold text-blue-600 flex items-center gap-2">
