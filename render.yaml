@@ -1,27 +1,27 @@
 services:
   - type: web
-    name: pincode-backend
-    env: node
-    plan: free
-    repo: https://github.com/PriyanshCG/pincode-app.git
-    rootDir: backend
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: MONGODB_URI
-        sync: false
+      name: pincode-backend
+          env: node
+              plan: free
+                  repo: https://github.com/PriyanshCG/pincode-app.git
+                      rootDir: backend
+                          buildCommand: npm install
+                              startCommand: npm start
+                                  envVars:
+                                        - key: MONGODB_URI
+                                                sync: false
 
-  - type: web
-    name: pincode-frontend
-    env: static
-    plan: free
-    repo: https://github.com/PriyanshCG/pincode-app.git
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: pincode-backend
-          envVarKey: RENDER_EXTERNAL_URL
+                                                  - type: static
+                                                      name: pincode-frontend
+                                                          env: static
+                                                              repo: https://github.com/PriyanshCG/pincode-app.git
+                                                                  rootDir: frontend
+                                                                      buildCommand: npm install && npm run build
+                                                                          staticPublishPath: ./dist
+                                                                              envVars:
+                                                                                    - key: VITE_API_URL
+                                                                                            fromService:
+                                                                                                      type: web
+                                                                                                                name: pincode-backend
+                                                                                                                          envVarKey: RENDER_EXTERNAL_URL
+                                                                                                                          
