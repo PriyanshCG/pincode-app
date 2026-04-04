@@ -7,6 +7,9 @@ services:
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
 
   - type: web
     name: pincode-frontend
